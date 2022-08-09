@@ -1,4 +1,4 @@
-import { ADD_POST, LIKE_POST } from "./types";
+import { ADD_POST, COMMENT_POST, LIKE_POST, REPOST_POST } from "./types";
 
 export const addNewPost = (id, text, image, userIcon, userName, userNickName) => {
     return {
@@ -23,6 +23,24 @@ export const likePost = (id, liked) => {
         payload: {
             id,
             liked,
+        },
+    };
+};
+export const commentPost = (id, commented) => {
+    return {
+        type: COMMENT_POST,
+        payload: {
+            id,
+            commented,
+        },
+    };
+};
+export const repostPost = (id, reposted) => {
+    return {
+        type: REPOST_POST,
+        payload: {
+            id,
+            reposted,
         },
     };
 };

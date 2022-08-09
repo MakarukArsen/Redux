@@ -147,3 +147,17 @@
 
     .save__icon {}
 }
+
+.actions__active {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #fff;
+
+    .icon {
+        fill: #fff;
+        width: 35px;
+        height: 35px;
+    }
+}

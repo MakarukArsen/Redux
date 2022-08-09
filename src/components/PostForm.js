@@ -4,6 +4,7 @@ import { addNewPost } from "../store/postsActions";
 import classes from "./Posts.module.scss";
 import { useSelector } from "react-redux/es/exports";
 import { postSelector, userSelector } from "../store/postsReducer";
+
 const PostForm = () => {
     const [inputText, setInputText] = useState("");
     const [inputImage, setInputImage] = useState("");

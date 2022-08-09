@@ -1,4 +1,4 @@
-import { ADD_POST, LIKE_POST } from "./types";
+import { ADD_POST, COMMENT_POST, LIKE_POST, REPOST_POST } from "./types";
 
 const initialState = {
     users: {
@@ -57,13 +57,22 @@ const postsReducer = (state = initialState, action) => {
 
     switch (type) {
         case ADD_POST: {
-            return { ...state, posts: [...state.posts, action.post] };
+            return { ...state, posts: [action.post, ...state.posts] };
         }
         case LIKE_POST: {
             const foundPostIndex = state.posts.findIndex((post) => post.id === payload.id);
-            const posts = [...state.posts];
-            posts[foundPostIndex].likes += 1;
-            return { ...state, posts: posts };
+            payload.liked ? (state.posts[foundPostIndex].likes -= 1) : (state.posts[foundPostIndex].likes += 1);
+            return state;
+        }
+        case COMMENT_POST: {
+            const foundPostIndex = state.posts.findIndex((post) => post.id === payload.id);
+            payload.commented ? (state.posts[foundPostIndex].comments -= 1) : (state.posts[foundPostIndex].comments += 1);
+            return state;
+        }
+        case REPOST_POST: {
+            const foundPostIndex = state.posts.findIndex((post) => post.id === payload.id);
+            payload.reposted ? (state.posts[foundPostIndex].reposts -= 1) : (state.posts[foundPostIndex].reposts += 1);
+            return state;
         }
         default: {
             return state;
