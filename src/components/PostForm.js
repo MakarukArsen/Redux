@@ -56,8 +56,18 @@ const PostForm = () => {
         <div className={classes.postForm}>
             <form className={classes.form}>
                 <div className={classes.row}>
-                    <input onChange={handleInputText} className={classes.input__text + " " + classes.input} type="text" />
-                    <input onChange={handleInputImage} className={classes.input__image + " " + classes.input} type="text" />
+                    <input
+                        placeholder="Text"
+                        onChange={handleInputText}
+                        className={classes.input__text + " " + classes.input}
+                        type="text"
+                    />
+                    <input
+                        placeholder="image URL"
+                        onChange={handleInputImage}
+                        className={classes.input__image + " " + classes.input}
+                        type="text"
+                    />
                     <select defaultValue={"R2D2"} onChange={handleSelect} className={classes.select}>
                         <option className={classes.option}>Anakin Skywalker</option>
                         <option className={classes.option}>R2D2</option>
